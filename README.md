@@ -25,9 +25,7 @@ Each particle $\mathbf{x}^i$ is advanced in pseudo time $s$ by
 
 $$
 \mathbf{x}^i_{s+1} = \mathbf{x}^i_{s} + \Delta s\,\frac{1}{N_p}\mathbf{B}\sum_{j=1}^{N_p}
-\left[\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\,\nabla_{\mathbf{x}^j_s}\log p(\mathbf{x}^j_s\mid\mathbf{y})
-+ \nabla_{\mathbf{x}^j_s}\cdot\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\right]
-+ \sqrt{2\Delta s}\,\boldsymbol{\beta}^i
+\left[\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\,\nabla_{\mathbf{x}^j_s}\log p(\mathbf{x}^j_s\mid\mathbf{y}) + \nabla_{\mathbf{x}^j_s}\cdot\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\right] + \sqrt{2\Delta s}\,\boldsymbol{\beta}^i
 $$
 
 The first kernel term attracts particles toward the posterior mode; the second repels them, keeping the ensemble spread
