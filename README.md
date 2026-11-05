@@ -10,8 +10,6 @@ This repository holds three Jupyter notebooks that run the Stochastic Particle F
 | `Lorenz96_SPFS.ipynb` | Smoother: `SPFS` | adjoint model | fixed or adaptive |
 | `Lorenz96_SPFS_ensAvg.ipynb` | Smoother: `SPFS` | ensemble-averaged sensitivity matrix | fixed |
 
-`Lorenz96_SPFS_ensAvg.ipynb` started as a copy of `Lorenz96_SPFS.ipynb`, so a diff of the two shows what changes between the adjoint formulation and the ensemble-averaged one.
-
 ## How the method works
 
 Particle flow moves a set of interacting particles from the prior to the posterior along a gradient velocity field in pseudo time $s$. Nothing is reweighted or resampled. Each particle $\mathbf{x}^i$ is updated as
