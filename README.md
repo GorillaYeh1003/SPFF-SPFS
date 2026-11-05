@@ -135,6 +135,8 @@ To try something quickly, lower `integration_time_step` first and `iter_num` sec
 
 Yeh, H.-L. & van Leeuwen, P.J. (2026) Unbiased fully nonlinear data assimilation. Part 1: The stochastic particle flow filter. Quarterly Journal of the Royal Meteorological Society, e70345. Available from: https://doi.org/10.1002/qj.70345
 
-Yeh, H.-L. & van Leeuwen, P.J. (2026) Unbiased fully nonlinear data assimilation. Part II: The stochastic particle flow smoother. Quarterly Journal of the Royal Meteorological Society, e70346. (In production.)
+Yeh, H.-L. & van Leeuwen, P.J. (2026) Unbiased fully nonlinear data assimilation. Part 2: The stochastic particle flow smoother. Quarterly Journal of the Royal Meteorological Society, e70346. (In production.)
 
 The matrix-valued kernel in the deterministic `PFF` follows Hu and van Leeuwen (2021).
+
+Hu, C.-C. & van Leeuwen, P.J. (2021) A particle flow filter for high-dimensional system applications. Quarterly Journal of the Royal Meteorological Society, 147, 2352–2374. Available from: https://doi.org/10.1002/qj.4028
