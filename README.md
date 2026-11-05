@@ -20,7 +20,17 @@ $$
 \mathbf{x}^i_{s+1} = \mathbf{x}^i_{s} + \Delta s\frac{1}{N_p}\mathbf{B}\sum_{j=1}^{N_p}\left[\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\,\nabla_{\mathbf{x}^j_s}\log p(\mathbf{x}^j_s\mid\mathbf{y}) + \nabla_{\mathbf{x}^j_s}\cdot\mathbf{K}(\mathbf{x}^i_s,\mathbf{x}^j_s)\right] + \sqrt{2\Delta s}\boldsymbol{\beta}^i
 $$
 
-The first term in the brackets acts as an attracting force that pulls the particles toward the mode of the posterior, and the second term represents a repulsive force that pushes them apart so the ensemble keeps its spread. $\mathbf{B}$, the localized prior covariance, works as a preconditioner. The stochastic variants add the noise term $\sqrt{2\Delta s}\,\boldsymbol{\beta}^i$, which makes the flow an unbiased sampler for any ensemble size; the deterministic `PFF` leaves it out. With a single particle ($N_p=1$) the update reduces to a variational method, so the filter behaves like an ensemble of 3D-Vars and the smoother like an ensemble of 4D-Vars, with the particles coupled through the kernel.
+The first term in the brackets acts as an attracting force that pulls the particles toward the mode of the posterior, and the second term represents a repulsive force that pushes them apart so the ensemble keeps its spread. $\mathbf{B}$, the localized prior covariance, works as a preconditioner. The stochastic variants add the noise term $\sqrt{2\Delta s}\boldsymbol{\beta}^i$, which makes the flow an unbiased sampler for any ensemble size; the deterministic `PFF` leaves it out.
+
+The noise for particle $i$ is the $i$th column of a matrix product:
+
+$$
+\boldsymbol{\beta}^i = \left(\mathbf{L}_{\mathbf{B}}\mathbf{N}_{n_x\times N_p}\mathbf{L}_{\overline{\mathbf{k}}}^T\right)_i
+$$
+
+$\mathbf{L}_{\mathbf{B}}$ and $\mathbf{L}_{\overline{\mathbf{k}}}$ are the lower triangular Cholesky decompositions of the localized prior covariance $\mathbf{B}$ and of the kernel Gram matrix $\overline{\mathbf{k}}$, whose entries are $K(\mathbf{x}^i_s,\mathbf{x}^j_s)/N_p$. $\mathbf{N}_{n_x\times N_p}$ stores noise drawn from $\mathcal{N}(0,\mathbf{I}_{N_p n_x\times N_p n_x})$ and reshaped into an $n_x\times N_p$ matrix. In the notebooks this product is computed by `compute_noise_fast`.
+
+With a single particle ($N_p=1$) the update reduces to a variational method, so the filter behaves like an ensemble of 3D-Vars and the smoother like an ensemble of 4D-Vars, with the particles coupled through the kernel.
 
 The smoother updates the particles at the start of the assimilation window. Its gradient adds up one term for every observation time $t_k$ in the window, and each term has to be carried back to time zero:
 
